@@ -1,0 +1,11 @@
+#nombre sexo edad semestre promedio
+irving m 18 1 8
+daniel m 24 1 8.5 
+jocelyn f 18 1 9
+marco m 19 1 7
+alexa f 18 6 8
+cloe f 22 3 10
+lisbeth f 17 8 6
+maritza f 20 3 9
+victor m 19 2 10
+adan m 22 8 9.5
