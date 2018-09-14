@@ -1,0 +1,14 @@
+promedio de edades de los estudiantes= 19.700001
+estudiantes en primer semestre= 4
+estudiantes en segundo semestre= 1
+estudiantes en tercer semestre= 2
+estudiantes en cuarto semestre= 0
+estudiantes en quinto semestre= 0
+estudiantes en sexto semestre= 1
+estudiantes en septimo semestre= 0
+estudiantes en octavo semestre= 2
+estudiantes en noveno semestre= 0
+estudiantes en otro semestre= 0
+promedio de calificaciones de los estudiantes= 8.500000
+estudiantes hombres= 5
+estudiantes mujeres= 5
