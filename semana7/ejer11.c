@@ -16,24 +16,15 @@ int main()
 	e=a; // no modificar a
 	for(c=0;c<N;c++)
 	{
+	printf("%f",e);
 	e=e+f;
-	d=pow(e,P);	
-	h=(e-a)/k;
-	j=k-1; //valor para que llegue  K-1 
-	for(i=0;i<=j;i++)
-	{
-	sum=(a+(h*j))+sum;
-
 	}
-	I=h*((d+a)/2+sum);
-	printf("%f  %f  %f",a,d,I);
+	
+	
 	fclose(entrada);
-	}
-	
-	
-	
 
 
 
 return 0;
 }
+
