@@ -1,2 +1,0 @@
-Potencia a b N K
-2 5 10 5 5  
