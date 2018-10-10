@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include<math.h>
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
-
 int main() {
 	FILE *dat;
 	float p,*ptr,suma=0,h,prom,d;
@@ -29,7 +27,7 @@ int main() {
 	}
 	d=sqrt(h/sum);
 	printf("EL promedio es igual a: %f\n",prom);	
-	printf("La desviaciÛn est·ndar es: %f",d);
+	printf("La desviaci√≥n est√°ndar es: %f",d);
 	
 	
 		return 0;
