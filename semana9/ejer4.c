@@ -1,7 +1,7 @@
 #include <stdio.h>
 	float cuadrado(float h);
 	int main(){
-		float x,x2;
+|		float x,x2;
 		printf("introduce un nuero\n");
 		scanf("%f",&x);
 		x2=cuadrado(x);
