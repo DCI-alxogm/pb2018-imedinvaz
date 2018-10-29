@@ -1,0 +1,2 @@
+Archivo Medida1 Medida2 Temp_izquierda Temp_arriba Temp_derecha Temp_abajo Error
+Temp 10 10 70 10 50 20 0.005  
