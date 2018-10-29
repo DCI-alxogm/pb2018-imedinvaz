@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-
+#include<string.h>
 	void oper(char nombre[255],int la, int lb,int l, int u, int r, int d,int e);
 	int main(int argc,char *argv[]){
 	printf("El programa que estas ejecutando es: %s creado por Irving Medina Vazquez\n\n\n",argv[0]);//darle al usuario nombre del programa, asi como su autor
@@ -12,7 +12,7 @@
 	unsigned int numi=1;
 	FILE *o;
 	if(argc==9){//leer desde linea de comandos
-		nombre[255]=argv[1];//leer nombre del archivo
+		*nombre=argv[1];//leer nombre del archivo
 		la=atoi(argv[2]);//convertir a entero la medida de los lados
 		lb=atoi(argv[3]);
 		l=atof(argv[4]);//convierte la cadena de caracteres a flotante para las temperaturas;
@@ -20,7 +20,7 @@
 		r=atof(argv[6]);
 		d=atof(argv[6]);
 		e=atof(argv[6]);
-		oper(nombre[255],la,lb,l,u,r,d,e);//usar funcion madre
+		oper(nombre,la,lb,l,u,r,d,e);//usar funcion madre
 	}
 	else if(argc>9){//mostrar al usuario los argumentos correctos 
 		printf("Mas argumentos de los necesarios, Se requieren 8 argumentos solamente en el siguiente orden seguidos de un espacio:\n Nombre del archivo a guardar\nMedida de un lado (deberán ser enteros)\nMedida del otro lado\nTemp. lado izquierdo\nTemp. lado superior\nTemp. lado derecho\nTemp. lado inferior");
@@ -39,7 +39,7 @@ scanf("%s",&j);//escanear variable para iniciar programa de diferente forma
 		fgets(t,255,o);//leer la linea donde se especifican las variables en el archivo para omitir rn calculo
 		fscanf(o,"%s %d %d %f %f %f %f %f",&nombre,&la,&lb,&l,&u,&r,&d,&e);	//leer las variables
 		fclose(o);
-		oper(nombre[255],la,lb,l,u,r,d,e);//usar funcion madre
+		oper(nombre,la,lb,l,u,r,d,e);//usar funcion madre
 
 			}
 
@@ -61,16 +61,16 @@ scanf("%s",&j);//escanear variable para iniciar programa de diferente forma
 	scanf("%f",&d);
 	printf("\nInserta el valor erroneo en el que desees despreciar:  ");
 	scanf("%f",&e);	
-	oper(nombre[255],la,lb,l,u,r,d,e);//ejecutar funcion madre
+	oper(nombre,la,lb,l,u,r,d,e);//ejecutar funcion madre
 			}
 	}
 return 0;
 }
 	void oper(char nombre[255],int la, int lb,int l, int u, int r, int d,int e){//funcion madre
 	char j[1];//definir las mismas variables para usarlas de la misma manera que corresponden a como fueron introducidas
-	char numc[255],nombre2[255];
+	char numc[255],nombre2[255]="";
 	int b,c,numi;	
-	float A[la][lb],V,con;
+	float A[la][lb],V,con,kk;
 	FILE *o;
 	for(b=0;b<la;b++){// iniciar en 0 los puntos 
 		for(c=0;c<lb;c++){
@@ -119,41 +119,19 @@ return 0;
 		fprintf(o,"\n");
 	}
 	fclose(o);			
-	V=A[(la-1)/2][(lb-1)/2]+A[(la-1)/2][(lb-1)/2];//calcular un valor real para su uso en el siguiente calculo
-	con=((V-A[(la-1)/2][(lb-1)/2])/V);//dar un valor para iniciar ciclo
+	V=A[(la-1)][(lb-1)]+A[(la-1)][(lb-1)];//calcular un valor real para su uso en el siguiente calculo
+	con=((V-A[(la-1)][(lb-1)])/V);//dar un valor para iniciar ciclo
 	strcat(nombre2,".txt");//concatenar string para nombrar las diferentes iteraciones con nombre comun
 	while(con>e){
+	printf("1\n");
 		sprintf(numc,"%i",numi ); //convertir contador en string en cada repeticion para su uso en el nombre de cada archivo de iteracion
-		V=A[(la-1)/2][(lb-1)/2];//guardar valor de iteracion anterior
-		for(b=0;b<la;b++){//asignacion de valores para cada iteracion
-			for(c=0;c<lb;c++){
-				if(b==(la-1)&&c==(lb-1)){//condicion esquinaderabajo
-					A[b][c]=(A[b-1][c]+A[b][c-1])/2;
-				}
-				else if(b==0&&c==0){//condicion esquinaizqarriba
-					A[b][c]=(A[b+1][c]+A[b][c+1])/2;
-				}
-				else if(b==0&&c==(lb-1)){//condicion esquinaesquinaderarrib
-					A[b][c]=(A[b][c-1]+A[b+1][c])/2;
-				}
-				else if(b==(la-1)&&c==0){//condicion esquinaizqabajo
-					A[b][c]=(A[b-1][c]+A[b][c+1])/2;
-				}		
-				else if(b==0){//condicion fila arriba
-					A[b][c]=(A[b][c-1]+A[b+1][c]+A[b][c+1])/3;
-				}
-				else if(b==(la-1)){//condicion fila abajo
-					A[b][c]=(A[b][c-1]+A[b-1][c]+A[b][c+1])/3;
-	   			}
-				else if(c==(lb-1)){//condicion derecha
-					A[b][c]=(A[b-1][c]+A[b][c-1]+A[b+1][c])/3;
-	   			}
-				else if(c==0){//condicion izquierda
-	    			A[b][c]=(A[b-1][c]+A[b][c+1]+A[b+1][c])/3;
-	   			}
-	   			else{//demas puntos del centro que no necesitan condicion
+		V=A[(la-1)][(lb-1)];//guardar valor de iteracion anterior
+		for(b=1;b<(la-1);b++){//asignacion de valores para cada iteracion
+			for(c=1;c<(lb-1);c++){
+				
+	   			//demas puntos del centro que no necesitan condicion
 					A[b][c]=(A[b+1][c]+A[b-1][c]+A[b][c-1]+A[b][c+1])/4;			
-				}
+				
 			}
 		}
 		strcat(numc,".-");//concatenar string para nombramiento del archivo de cada iteracion para mejor vista y orden	
@@ -168,7 +146,9 @@ return 0;
 			fprintf(o,"\n");
 		}
 		fclose(o);
-		con=((V-A[(la-1)/2][(lb-1)/2])/V);//calcular error en la iteracion para su evaluacion en el ciclo
+		kk=((A[(la-1)/2][(lb-1)/2]-V)/A[(la-1)/2][(lb-1)/2]);//calcular error en la iteracion para su evaluacion en el ciclo
+		con=abs(kk);
+		printf("%f",con);
 		numi++; //contador para el nombre del archivo segun la iteracion
 }	
 	}
